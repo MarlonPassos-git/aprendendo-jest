@@ -1,12 +1,18 @@
-describe('Object to query string', () => {
-  it('should create a valid query string when an object is passed', () => {
-    const useData = { 
-      name: 'Marlon',
-      profession: 'desenvolvimento'
-    }
-    const result = 'Olá eu sou o Marlon e trabalho com desenvolvimento'
+type IQueryString = Record<string, string>
 
-    expect(queryString(useData)).toEqual(result)
-  });
+/**
+ * Converte um objeto em uma QueryString
+ * 
+ * @see {@link https://en.wikipedia.org/wiki/Query_string  oque é queryString?}
+ */
+export function queryString(obj: IQueryString):string {
+  const keys = Object.keys(obj);
 
-});
+  let queryStringAll = keys.reduce(( queryString, key) => {
+    const value = obj[key]
+    return `${queryString}${key}=${value}&` 
+  }, '')
+  queryStringAll = queryStringAll.slice()
+
+  return queryStringAll
+}
