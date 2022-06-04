@@ -21,6 +21,7 @@
         "valid-jsdoc":"off",
         "require-jsdoc":"off",
         "jsdoc/require-description": 1,
-        "jsdoc/require-jsdoc": 1
+        "jsdoc/require-jsdoc": 1,
+        "quotes": [ "warn", "single" ]
     }
 }
