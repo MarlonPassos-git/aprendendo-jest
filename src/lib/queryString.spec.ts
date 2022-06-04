@@ -1,12 +1,24 @@
+import { queryString } from './queryString'
+
 describe('Object to query string', () => {
   it('should create a valid query string when an object is passed', () => {
-    const useData = { 
+    const useData = {
       name: 'Marlon',
-      profession: 'desenvolvimento'
+      profession: 'desenvolvimento',
     }
-    const queryStringValid =  'name=Fabio&profession'
+    const queryStringValid = 'name=Marlon&profession=desenvolvimento'
 
     expect(queryString(useData)).toEqual(queryStringValid)
-  });
+  })
 
-});
+  it('Espero que funcione quando o valor for arrays', () => {
+    const useData = {
+			name: 'Marlon',
+      profession: 'desenvolvimento',
+      languages: ['js', 'ts'],
+		}
+		const queryStringValid = 'name=Marlon&profession=desenvolvimento&languages=js,ts'
+
+		expect(queryString(useData)).toEqual(queryStringValid)
+  })
+})

@@ -4,9 +4,9 @@
     "**/dist": true,
     "tsconfig.json": true,
     "yarn.lock": true,
-  ".eslintrc.json": false,
+    ".eslintrc.json": false,
     ".eslintignore": true,
     ".gitignore": true,
-    ".prettierrc": true,
-  },
+    ".prettierrc": false
+  }
 }

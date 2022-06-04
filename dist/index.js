@@ -1,8 +1,8 @@
-"use strict";
+'use strict';
 /**
  *
  */
 function a() {
-    return 'a';
+  return 'a';
 }
 console.log(a());

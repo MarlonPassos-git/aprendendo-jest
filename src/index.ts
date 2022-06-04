@@ -1,10 +1,8 @@
 /**
- * returna uma coisinha 
+ * returna uma coisinha
  */
-function a():string {
+function a(): string {
   return 'a';
 }
 
-
 console.log(a());
-
