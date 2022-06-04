@@ -1,0 +1,12 @@
+{
+  "files.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "tsconfig.json": true,
+    "yarn.lock": true,
+    ".eslintrc.json": true,
+    ".eslintignore": true,
+    ".gitignore": true,
+    ".prettierrc": true,
+  },
+}
