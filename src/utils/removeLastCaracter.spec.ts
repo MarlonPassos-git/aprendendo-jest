@@ -6,4 +6,10 @@ describe('Deve remover o utimo caracterer de uma string', () => {
     
     expect(remeveLastCaracter(fullText)).toBe(textWithoutLastLetter)
   });
+
+  it('não deve ser iguais', () => {
+    const fullText = 'marlonpass'
+
+    expect(remeveLastCaracter(fullText)).not.toBe(fullText)
+  });
 });
