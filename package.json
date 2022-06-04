@@ -13,11 +13,13 @@
     "eslint-plugin-jsdoc": "^39.3.2",
     "jest": "^28.1.0",
     "prettier": "^2.6.2",
+    "ts-jest": "^28.0.4",
     "ts-node": "^10.8.1",
     "typescript": "^4.7.3"
   },
   "scripts": {
     "test": "jest",
+    "test:watch": "jest --watch",
     "dev": "tsc --watch",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
