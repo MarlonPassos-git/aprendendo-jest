@@ -6,7 +6,7 @@
  * removeLastCaracter("aaa") // "aa"
  */
 export function removeLastCaracter(text: string): string {
-  const totaletersRemaining = text.length - 1;
+  const totaletersRemaining = text.length - 1
 
-  return text.slice(0, totaletersRemaining);
+  return text.slice(0, totaletersRemaining)
 }

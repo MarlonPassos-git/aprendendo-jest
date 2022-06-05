@@ -6,7 +6,7 @@ it('should sum 2 and 2 and the result  must be 4', () => {
 
 it('should sum 2 and 2 and the result is not equal to 7', () => {
   expect(sum(2, 2)).not.toBe(7);
-});
+  });
 
 it('should give an erro when passing infinity', () => {
   expect(() => {
