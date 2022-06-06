@@ -24,6 +24,23 @@ export class Cart {
 		return this.totalItems
 	}
 
+	/**
+	 * Remove product from cart if it exists
+	 */
+	public remove(item: IProduct): void {
+		const positionArray = this.itemPosition(item)
+
+		if (positionArray !== -1) {
+			this.listProducts.splice(positionArray, 1)
+		}
+
+		this.updateAll()
+	}
+
+
+	/**
+	 * add product to cart
+	 */
 	public add(item: IItem): void {
 		const positionArray = this.itemPosition(item.product)
 		const itemExists = positionArray !== -1
@@ -35,19 +52,31 @@ export class Cart {
 		}
 		this.updateAll()
 	}
-
+	/**
+	 * return all itens in cart
+	 */
 	public getListProducts(): IItem[] {
 		return this.listProducts
 	}
-
+	/**
+	 * return the total price of all product 
+	 */
 	public getTotalPrice(): number {
 		return this.totalPrice
 	}
 
+	/**
+	 * return the total quantity of all product
+	 * @example
+	 * if add an product with 2 unities and another
+	 * with 3 unities, the total quantity will be 5
+	 */
 	public getTotalProducts(): number {
 		return this.totalProduct
 	}
-
+	/**
+	 * return the total of different products in the cart
+	 */
 	private updateTotalPrice(): this {
 		const totalPrice = this.listProducts.reduce(
 			(tot, { product: { price }, quantity }) => {
@@ -85,15 +114,5 @@ export class Cart {
 
 	private updateAll(): void {
 		this.updateTotalItems().updateTotalPrice().updateTotalProducts()
-	}
-
-	public remove(item: IProduct): void {
-		const positionArray = this.itemPosition(item)
-
-		if (positionArray !== -1) {
-			this.listProducts.splice(positionArray, 1)
-		}
-
-		this.updateAll()
 	}
 }
