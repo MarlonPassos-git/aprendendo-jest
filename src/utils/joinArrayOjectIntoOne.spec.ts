@@ -5,7 +5,7 @@ describe('Junção de objetos', () => {
     const arrayOfObjects = [
       {
         nome: 'marlon',
-    },
+      },
       {
         idade: '23',
       },
@@ -13,5 +13,14 @@ describe('Junção de objetos', () => {
         color: 'blue',
       },
     ]
+
+    const fullObjet = {
+      nome: 'marlon',
+      idade: '23',
+      color: 'blue',
+    }
+
+    expect(joinArrayOjectIntoOne(arrayOfObjects)).toEqual(fullObjet)
+    
   })
 })
