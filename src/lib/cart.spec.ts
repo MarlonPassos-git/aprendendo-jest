@@ -18,6 +18,13 @@ describe('cart1', () => {
 		quantity: 3,
 	}
 
+  const item3 = {
+		product: {
+			title: 'Product ',
+			price: 5000,
+		},
+		quantity: 10,
+	}
   beforeEach(() => {
     cart = new Cart()
   })
@@ -66,5 +73,19 @@ describe('cart1', () => {
     expect(cart.getListProducts()).toEqual([item1Plus])
 
   })
+
+  it('should keeo the values consistent when removing a product', () => {
+    cart.add(item1)
+    cart.add(item2)
+    cart.add(item3)
+    cart.remove(item1)
+
+    expect(cart.getListProducts()).toEqual([item2])
+    expect(cart.getTotalItens()).toEqual(2)
+    expect(cart.getTotalPrice()).toEqual(12345 * 3 + 5000 * 10)
+    expect(cart.getTotalProducts()).toEqual(13)
+  })
+
+
 })
 // ssas 
