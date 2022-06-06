@@ -33,11 +33,9 @@ export class Cart {
 	}
 
 	private updateTotalPrice(): void {
-		let totalPrice = 0
-
-		this.listProducts.forEach(item => {
-			totalPrice += item.product.price * item.quantity
-		})
+		const totalPrice = this.listProducts.reduce((tot, { product: { price }, quantity }) => {
+			return (price * quantity) + tot
+		}, 0)
 
 		this.totalPrice = totalPrice
 	}
