@@ -3,23 +3,27 @@ type IProduct = {
   price: number
 }
 
+type IItem = {
+	product: IProduct
+	quantity: number
+}
+
 export class Cart {
 	private totalItems: number = 0
-	private listProducts: IProduct[] = []
+	private listProducts: IItem[] = []
 
-	constructor() {
-	}
+	constructor() {}
 
-	public getTotal(): number {
+	public getTotalItens(): number {
 		return this.totalItems
 	}
 
-	public add(product: IProduct): void {
-		this.totalItems += product.price
+	public add(product: IItem): void {
+		++this.totalItems
 		this.listProducts.push(product)
-  }
-  
-  public getListProducts(): IProduct[] {
-    return this.listProducts
-  }
+	}
+
+	public getListProducts(): IItem[] {
+		return this.listProducts
+	}
 }
