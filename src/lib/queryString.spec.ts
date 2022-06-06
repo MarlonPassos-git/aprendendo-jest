@@ -34,6 +34,15 @@ describe('Parse a query String to object', () => {
 		expect(parse(queryStringValid)).toEqual(useData)
   })
   
+  it('deve converter uma quert string com uma parametro em objeto ', () => {
+		const useData = {
+			name: 'Marlon',
+		}
+		const queryStringValid = 'name=Marlon'
+
+		expect(parse(queryStringValid)).toEqual(useData)
+	})
+
   it('deve retorna o objeto com array', () => {
 		const useData = {
 			name: 'Marlon',
