@@ -1,3 +1,5 @@
+import find  from 'lodash/fp/find'
+
 type IProduct = {
   title: string
   price: number
@@ -8,6 +10,9 @@ type IItem = {
 	quantity: number
 }
 
+/**
+ * Componente responsavel por controlar todo o fuxo do carrinho de compras
+ */
 export class Cart {
 	private totalItems: number = 0
 	private listProducts: IItem[] = []

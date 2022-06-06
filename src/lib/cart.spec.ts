@@ -50,5 +50,21 @@ describe('cart1', () => {
     expect(cart.getTotalProducts()).toEqual(5)
 
   })
+
+  it('if the item exists in the cart and is re-added, the quantity of the last addition must remain', () => {
+    const item1Plus = {
+			product: {
+				title: 'Product 1',
+				price: 1000,
+			},
+			quantity: 5,
+		}
+    
+    cart.add(item1)
+    cart.add(item1Plus)
+    
+    expect(cart.getListProducts()).toEqual([item1Plus])
+
+  })
 })
 // ssas 
