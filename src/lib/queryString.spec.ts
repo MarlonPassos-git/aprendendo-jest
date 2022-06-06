@@ -32,5 +32,15 @@ describe('Parse a query String to object', () => {
 		const queryStringValid = 'name=Marlon&profession=desenvolvimento'
 
 		expect(parse(queryStringValid)).toEqual(useData)
+  })
+  
+  it('deve retorna o objeto com array', () => {
+		const useData = {
+			name: 'Marlon',
+			languages: ['js', 'ts'],
+		}
+		const queryStringValid = 'name=Marlon&language=js,ts'
+
+		expect(parse(queryStringValid)).toEqual(useData)
 	})
 })
