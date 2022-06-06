@@ -1,20 +1,22 @@
 import { Cart } from './cart'
 
 describe('cart1', () => {
-  it('should return 0 when getTotal() is executed in a newly created ', () => {
-    const cart = new Cart()
+  let cart: Cart
 
+  beforeEach(() => {
+    cart = new Cart()
+  })
+  
+  it('should return 0 when getTotal() is executed in a newly created ', () => {
     expect(cart.getTotalItens()).toEqual(0)
   })
 
   it('should empty list when started', () => {
-    const cart = new Cart()
 
     expect(cart.getListProducts()).toEqual([])
   })
 
   it('should be able to add an item to cart', () => {
-		const cart = new Cart()
 		const item = {
 			product: {
 				title: 'Product 1',
