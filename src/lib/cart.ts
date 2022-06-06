@@ -25,10 +25,9 @@ export class Cart {
 	}
 
 	public add(item: IItem): void {
-		
-		const positionArray = this.itemPosition(item)
+		const positionArray = this.itemPosition(item.product)
 		const itemExists = positionArray !== -1
-		
+
 		if (itemExists) {
 			this.listProducts[positionArray].quantity = item.quantity
 		} else {
@@ -68,8 +67,8 @@ export class Cart {
 		return this
 	}
 
-	private updateTotalProducts(): this { 
-		const totalProducts =  this.listProducts.reduce((acc, { quantity }) => {
+	private updateTotalProducts(): this {
+		const totalProducts = this.listProducts.reduce((acc, { quantity }) => {
 			return acc + quantity
 		}, 0)
 
@@ -78,19 +77,17 @@ export class Cart {
 		return this
 	}
 
-	private itemPosition(item: IItem): number {
+	private itemPosition(item: IProduct): number {
 		return this.listProducts.findIndex(({ product: { title } }) => {
-			return title === item.product.title
+			return title === item.title
 		})
-	}	
-
-	private updateAll(): void {
-		this.updateTotalItems()
-			.updateTotalPrice()
-			.updateTotalProducts()
 	}
 
-	public remove(item: IItem): void {
+	private updateAll(): void {
+		this.updateTotalItems().updateTotalPrice().updateTotalProducts()
+	}
+
+	public remove(item: IProduct): void {
 		const positionArray = this.itemPosition(item)
 
 		if (positionArray !== -1) {
