@@ -19,7 +19,6 @@ export function queryString(obj: IQueryString): string {
 return queryStringAll
 }
 
-
 /**
  * Transforma uma queryString em um objeto
  */
