@@ -1,6 +1,7 @@
+import type { IQueryString } from '../types/QueryString'
+import { joinArrayOjectIntoOne } from '../utils/joinArrayOjectIntoOne'
 import { removeLastCaracter } from '../utils/removeLastCaracter'
-
-type IQueryString = Record<string, string | string[]>;
+import { transformStringWithSymbolEqualtoObject } from '../utils/transformStringWithSymbolEqualtoObject'
 
 /**
  * Converte um objeto em uma QueryString
@@ -16,4 +17,17 @@ export function queryString(obj: IQueryString): string {
   queryStringAll = removeLastCaracter(queryStringAll)
   
 return queryStringAll
+}
+
+
+/**
+ * Transforma uma queryString em um objeto
+ */
+export function parse(queryString: string): IQueryString {
+  const ObjectList = queryString
+    .split('&')
+    .map(transformStringWithSymbolEqualtoObject)
+  const obj = joinArrayOjectIntoOne(ObjectList)
+
+  return obj
 }

@@ -24,7 +24,7 @@ describe('Object to query string', () => {
 })
 
 describe('Parse a query String to object', () => {
-  it('should create a valid query string when an object is passed', () => {
+  it('deve retorna o objeto', () => {
 		const useData = {
 			name: 'Marlon',
 			profession: 'desenvolvimento',
