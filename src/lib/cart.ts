@@ -20,8 +20,6 @@ export class Cart {
 	private totalPrice: number = 0
 	private totalProduct: number = 0
 
-	constructor() {}
-
 	public getTotalItens(): number {
 		return this.totalItems
 	}
@@ -36,10 +34,7 @@ export class Cart {
 		} else {
 			this.listProducts.push(item)
 		}
-
-		this.updateTotalItems()
-			.updateTotalPrice()
-			.updateTotalProducts()
+		this.updateAll()
 	}
 
 	public getListProducts(): IItem[] {
@@ -89,6 +84,11 @@ export class Cart {
 		})
 	}	
 
+	private updateAll(): void {
+		this.updateTotalItems()
+			.updateTotalPrice()
+			.updateTotalProducts()
+	}
 
 	public remove(item: IItem): void {
 		const positionArray = this.itemPosition(item)
@@ -97,8 +97,6 @@ export class Cart {
 			this.listProducts.splice(positionArray, 1)
 		}
 
-		this.updateTotalItems()
-			.updateTotalPrice()
-			.updateTotalProducts()
+		this.updateAll()
 	}
 }
