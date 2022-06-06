@@ -12,6 +12,8 @@ export class Cart {
 	private totalItems: number = 0
 	private listProducts: IItem[] = []
 	private totalPrice: number = 0
+	private totalProduct: number = 0
+
 	constructor() {}
 
 	public getTotalItens(): number {
@@ -22,6 +24,7 @@ export class Cart {
 		++this.totalItems
 		this.listProducts.push(product)
 		this.updateTotalPrice()
+		this.updateTotalProducts()
 	}
 
 	public getListProducts(): IItem[] {
@@ -32,11 +35,26 @@ export class Cart {
 		return this.totalPrice
 	}
 
+	public getTotalProducts(): number {
+		return this.totalProduct
+	}
+
 	private updateTotalPrice(): void {
-		const totalPrice = this.listProducts.reduce((tot, { product: { price }, quantity }) => {
-			return (price * quantity) + tot
-		}, 0)
+		const totalPrice = this.listProducts.reduce(
+			(tot, { product: { price }, quantity }) => {
+				return price * quantity + tot
+			},
+			0,
+		)
 
 		this.totalPrice = totalPrice
+	}
+
+	private updateTotalProducts(): void { 
+		const totalProducts =  this.listProducts.reduce((acc, { quantity }) => {
+			return acc + quantity
+		}, 0)
+
+		this.totalProduct = totalProducts
 	}
 }
