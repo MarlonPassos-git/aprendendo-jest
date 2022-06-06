@@ -1,4 +1,4 @@
-import { queryString } from './queryString'
+import { queryString, parse } from './queryString'
 
 describe('Object to query string', () => {
   it('should create a valid query string when an object is passed', () => {
@@ -21,4 +21,16 @@ describe('Object to query string', () => {
 
 		expect(queryString(useData)).toEqual(queryStringValid)
   })
+})
+
+describe('Parse a query String to object', () => {
+  it('should create a valid query string when an object is passed', () => {
+		const useData = {
+			name: 'Marlon',
+			profession: 'desenvolvimento',
+		}
+		const queryStringValid = 'name=Marlon&profession=desenvolvimento'
+
+		expect(parse(queryStringValid)).toEqual(useData)
+	})
 })
