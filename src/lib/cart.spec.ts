@@ -27,7 +27,7 @@ describe('cart1', () => {
 		cart.add(item)
 
     expect(cart.getListProducts()).toEqual([item])
-    expect(cart.getTotalItens()).toEqual(2)
+    expect(cart.getTotalItens()).toEqual(1)
     expect(cart.getTotalPrice()).toEqual(2000)
 	})
 
