@@ -36,6 +36,8 @@ describe('cart1', () => {
     expect(cart.getListProducts()).toEqual([item1])
     expect(cart.getTotalItens()).toEqual(1)
     expect(cart.getTotalPrice()).toEqual(2000)
+    expect(cart.getTotalProducts()).toEqual(2)
+
   })
   
   it('should be able to add two products at the same time', () => {
@@ -45,8 +47,8 @@ describe('cart1', () => {
     expect(cart.getListProducts()).toEqual([item1, item2])
     expect(cart.getTotalItens()).toEqual(2)
     expect(cart.getTotalPrice()).toEqual(12345 * 3 + 1000 * 2)
+    expect(cart.getTotalProducts()).toEqual(5)
 
   })
-
 })
 // ssas 
