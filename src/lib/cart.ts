@@ -88,4 +88,17 @@ export class Cart {
 			return title === item.product.title
 		})
 	}	
+
+
+	public remove(item: IItem): void {
+		const positionArray = this.itemPosition(item)
+
+		if (positionArray !== -1) {
+			this.listProducts.splice(positionArray, 1)
+		}
+
+		this.updateTotalItems()
+			.updateTotalPrice()
+			.updateTotalProducts()
+	}
 }

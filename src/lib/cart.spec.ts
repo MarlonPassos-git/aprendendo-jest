@@ -80,7 +80,7 @@ describe('cart1', () => {
     cart.add(item3)
     cart.remove(item1)
 
-    expect(cart.getListProducts()).toEqual([item2])
+    expect(cart.getListProducts()).toEqual([item2, item3])
     expect(cart.getTotalItens()).toEqual(2)
     expect(cart.getTotalPrice()).toEqual(12345 * 3 + 5000 * 10)
     expect(cart.getTotalProducts()).toEqual(13)
