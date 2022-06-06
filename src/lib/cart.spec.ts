@@ -12,7 +12,6 @@ describe('cart1', () => {
   })
 
   it('should empty list when started', () => {
-
     expect(cart.getListProducts()).toEqual([])
   })
 
@@ -22,13 +21,14 @@ describe('cart1', () => {
 				title: 'Product 1',
 				price: 1000,
 			},
-			quantity: 1,
+			quantity: 2,
 		}
 
 		cart.add(item)
 
     expect(cart.getListProducts()).toEqual([item])
-    expect(cart.getTotalItens()).toEqual(1)
+    expect(cart.getTotalItens()).toEqual(2)
+    expect(cart.getTotalPrice()).toEqual(2000)
 	})
 
 })
