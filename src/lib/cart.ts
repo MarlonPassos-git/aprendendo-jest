@@ -1,4 +1,5 @@
-import find  from 'lodash/fp/find'
+import remove from 'lodash/remove'
+import find  from 'lodash/find'
 
 type IProduct = {
   title: string
@@ -25,11 +26,20 @@ export class Cart {
 		return this.totalItems
 	}
 
-	public add(product: IItem): void {
-		++this.totalItems
-		this.listProducts.push(product)
-		this.updateTotalPrice()
-		this.updateTotalProducts()
+	public add(item: IItem): void {
+		
+		const positionArray = this.itemPosition(item)
+		const itemExists = positionArray !== -1
+		
+		if (itemExists) {
+			this.listProducts[positionArray].quantity = item.quantity
+		} else {
+			this.listProducts.push(item)
+		}
+
+		this.updateTotalItems()
+			.updateTotalPrice()
+			.updateTotalProducts()
 	}
 
 	public getListProducts(): IItem[] {
@@ -44,7 +54,7 @@ export class Cart {
 		return this.totalProduct
 	}
 
-	private updateTotalPrice(): void {
+	private updateTotalPrice(): this {
 		const totalPrice = this.listProducts.reduce(
 			(tot, { product: { price }, quantity }) => {
 				return price * quantity + tot
@@ -53,13 +63,29 @@ export class Cart {
 		)
 
 		this.totalPrice = totalPrice
+
+		return this
 	}
 
-	private updateTotalProducts(): void { 
+	private updateTotalItems(): this {
+		this.totalItems = this.listProducts.length
+
+		return this
+	}
+
+	private updateTotalProducts(): this { 
 		const totalProducts =  this.listProducts.reduce((acc, { quantity }) => {
 			return acc + quantity
 		}, 0)
 
 		this.totalProduct = totalProducts
+
+		return this
 	}
+
+	private itemPosition(item: IItem): number {
+		return this.listProducts.findIndex(({ product: { title } }) => {
+			return title === item.product.title
+		})
+	}	
 }
