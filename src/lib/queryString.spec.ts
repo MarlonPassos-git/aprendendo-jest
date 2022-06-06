@@ -39,7 +39,7 @@ describe('Parse a query String to object', () => {
 			name: 'Marlon',
 			languages: ['js', 'ts'],
 		}
-		const queryStringValid = 'name=Marlon&language=js,ts'
+		const queryStringValid = 'name=Marlon&languages=js,ts'
 
 		expect(parse(queryStringValid)).toEqual(useData)
 	})
