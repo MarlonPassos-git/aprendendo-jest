@@ -4,9 +4,13 @@
     "**/dist": true,
     "tsconfig.json": true,
     "yarn.lock": true,
-    ".eslintrc.json": false,
+    ".eslintrc.json": true,
     ".eslintignore": true,
     ".gitignore": true,
-    ".prettierrc": false
-  }
+    ".prettierrc": true,
+    ".husky": true,
+    "commitlint.config.cjs": true,
+    "jest.config.ts": true,
+  },
+  "editor.snippetSuggestions": "top",
 }

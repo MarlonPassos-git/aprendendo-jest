@@ -31,3 +31,5 @@ export function parse(queryString: string): IQueryString {
 
   return obj
 }
+
+
