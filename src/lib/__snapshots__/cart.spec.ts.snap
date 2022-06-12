@@ -2,8 +2,6 @@
 
 exports[`cart1 It should show an empty cart when i add the item and after that it's skein 1`] = `Array []`;
 
-exports[`cart1 It should show an1 empty cart when i add the item and after that it's skein 1`] = `Array []`;
-
 exports[`cart1 Must show a summary of the entire cart 1`] = `
 Object {
   "items": 2,

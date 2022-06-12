@@ -6,6 +6,7 @@
   "devDependencies": {
     "@commitlint/cli": "^17.0.2",
     "@commitlint/config-conventional": "^17.0.2",
+    "@types/dinero.js": "^1.9.0",
     "@types/jest": "^28.1.0",
     "@types/lodash": "^4.14.182",
     "@typescript-eslint/eslint-plugin": "^5.27.0",

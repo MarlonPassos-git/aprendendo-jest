@@ -1,3 +1,8 @@
+import money from 'dinero.js'
+
+money.defaultCurrency = 'BRL'
+money.defaultPrecision = 2
+
 type IProduct = {
   title: string
   price: number
@@ -14,7 +19,7 @@ type IItem = {
 export class Cart {
 	private totalItems: number = 0
 	private listProducts: IItem[] = []
-	private totalPrice: number = 0
+	private totalPrice: money.Dinero = money({ amount: 0 })
 	private totalProduct: number = 0
 
 	public getTotalItens(): number {
@@ -37,7 +42,7 @@ export class Cart {
 	public checkout(): void {
 		this.listProducts = []
 		this.totalItems = 0
-		this.totalPrice = 0
+		this.totalPrice = money({ amount: 0 })
 		this.totalProduct = 0
 	}
 
@@ -46,7 +51,7 @@ export class Cart {
 
 		return {
 			items: totalItems,
-			price: totalPrice,
+			price: totalPrice.getAmount(),
 			produts: {
 				total: totalProduct,
 				list: listProducts,
@@ -73,12 +78,12 @@ export class Cart {
 	 */
 	public getListProducts(): IItem[] {
 		return this.listProducts
-	}	
+	}
 	/**
-	 * return the total price of all product 
+	 * return the total price of all product
 	 */
 	public getTotalPrice(): number {
-		return this.totalPrice
+		return this.totalPrice.getAmount()
 	}
 
 	/**
@@ -95,10 +100,10 @@ export class Cart {
 	 */
 	private updateTotalPrice(): this {
 		const totalPrice = this.listProducts.reduce(
-			(tot, { product: { price }, quantity }) => {
-				return price * quantity + tot
+			(acc, { product: { price }, quantity }) => {
+				return acc.add(money({ amount: price * quantity }))
 			},
-			0,
+			money({ amount: 0 }),
 		)
 
 		this.totalPrice = totalPrice
