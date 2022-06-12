@@ -1,3 +1,4 @@
+import { add } from 'lodash'
 import { Cart } from './cart'
 
 describe('cart1', () => {
@@ -9,7 +10,6 @@ describe('cart1', () => {
 		},
 		quantity: 2,
 	}
-
 	const item2 = {
 		product: {
 			title: 'Product 2',
@@ -17,14 +17,21 @@ describe('cart1', () => {
 		},
 		quantity: 3,
 	}
-
 	const item3 = {
 		product: {
-			title: 'Product ',
+			title: 'Product 3',
 			price: 5000,
 		},
 		quantity: 10,
 	}
+	const item4 = {
+		product: {
+			title: 'Product 4',
+			price: 654321,
+		},
+		quantity: 30,
+	}
+
 	beforeEach(() => {
 		cart = new Cart()
 	})
@@ -107,5 +114,21 @@ describe('cart1', () => {
 		expect(cart.getTotalProducts()).toEqual(0)
 		expect(cart.getTotalPrice()).toEqual(0)
 	})
+
+	describe('special conditions', () => {
+		it('should apply percentage discount when reach minimum amount of discount', () => {
+			const condition = {
+				percentage: 25,
+				minimum: 30,
+			}
+
+			cart.add(item1)
+			cart.add(item4)
+
+			expect(cart.getTotalPrice()).toEqual((1000 * 2 + 654321 * 30) * 0.75)
+		})
+	})
 })
-// ssas
+
+
+

@@ -8,6 +8,11 @@ type IProduct = {
   price: number
 }
 
+type IConditionDiscount = {
+	percentage: number;
+	total: number;
+};
+
 type IItem = {
 	product: IProduct
 	quantity: number
@@ -21,6 +26,7 @@ export class Cart {
 	private listProducts: IItem[] = []
 	private totalPrice: money.Dinero = money({ amount: 0 })
 	private totalProduct: number = 0
+	private conditionDiscount: IConditionDiscount | undefined = undefined
 
 	public getTotalItens(): number {
 		return this.totalItems
