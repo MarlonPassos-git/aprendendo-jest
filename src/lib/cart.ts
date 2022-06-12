@@ -41,6 +41,19 @@ export class Cart {
 		this.totalProduct = 0
 	}
 
+	public summary() {
+		const { totalItems, totalPrice, totalProduct, listProducts } = this
+
+		return {
+			items: totalItems,
+			price: totalPrice,
+			produts: {
+				total: totalProduct,
+				list: listProducts,
+			},
+		}
+	}
+
 	/**
 	 * add product to cart
 	 */

@@ -3,3 +3,29 @@
 exports[`cart1 It should show an empty cart when i add the item and after that it's skein 1`] = `Array []`;
 
 exports[`cart1 It should show an1 empty cart when i add the item and after that it's skein 1`] = `Array []`;
+
+exports[`cart1 Must show a summary of the entire cart 1`] = `
+Object {
+  "items": 2,
+  "price": 55000,
+  "produts": Object {
+    "list": Array [
+      Object {
+        "product": Object {
+          "price": 1000,
+          "title": "Product 1",
+        },
+        "quantity": 5,
+      },
+      Object {
+        "product": Object {
+          "price": 5000,
+          "title": "Product ",
+        },
+        "quantity": 10,
+      },
+    ],
+    "total": 15,
+  },
+}
+`;

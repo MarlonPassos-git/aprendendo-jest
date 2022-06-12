@@ -90,6 +90,13 @@ describe('cart1', () => {
 		expect(cart.getListProducts()).toMatchSnapshot()
 	})
 
+	it('Must show a summary of the entire cart', () => {
+		cart.add(item1)
+		cart.add(item3)
+
+		expect(cart.summary()).toMatchSnapshot()
+	})
+
 	it('must reset cart when checkout is activated', () => {
 		cart.add(item1)
 		cart.add(item2)
