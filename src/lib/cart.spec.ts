@@ -1,4 +1,3 @@
-import { add } from 'lodash'
 import { Cart } from './cart'
 
 describe('cart1', () => {
@@ -116,16 +115,18 @@ describe('cart1', () => {
 	})
 
 	describe('special conditions', () => {
-		it('should apply percentage discount when reach minimum amount of discount', () => {
+		fit('should apply percentage discount when reach minimum amount of discount', () => {
 			const condition = {
-				percentage: 25,
+				percentage: 75,
 				minimum: 30,
 			}
-
+			const valueWithDiscount = Math.trunc((1000 * 2 + 654321 * 30) * 0.75)
 			cart.add(item1)
 			cart.add(item4)
+			cart.conditionDiscount = condition
 
-			expect(cart.getTotalPrice()).toEqual((1000 * 2 + 654321 * 30) * 0.75)
+
+			expect(cart.getTotalPrice()).toEqual(valueWithDiscount)
 		})
 	})
 })

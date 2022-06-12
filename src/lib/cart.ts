@@ -10,8 +10,8 @@ type IProduct = {
 
 type IConditionDiscount = {
 	percentage: number;
-	total: number;
-};
+	minimum: number;
+} | undefined
 
 type IItem = {
 	product: IProduct
@@ -26,7 +26,7 @@ export class Cart {
 	private listProducts: IItem[] = []
 	private totalPrice: money.Dinero = money({ amount: 0 })
 	private totalProduct: number = 0
-	private conditionDiscount: IConditionDiscount | undefined = undefined
+	private _conditionDiscount: IConditionDiscount = undefined
 
 	public getTotalItens(): number {
 		return this.totalItems
@@ -43,6 +43,15 @@ export class Cart {
 		}
 
 		this.updateAll()
+	}
+
+	public set conditionDiscount(value: IConditionDiscount) { 
+		this._conditionDiscount = value
+		this.updateAll()
+	}
+
+	public get conditionDiscount(): IConditionDiscount { 
+		return this._conditionDiscount
 	}
 
 	public checkout(): void {
@@ -105,12 +114,20 @@ export class Cart {
 	 * return the total of different products in the cart
 	 */
 	private updateTotalPrice(): this {
-		const totalPrice = this.listProducts.reduce(
+		let totalPrice = this.listProducts.reduce(
 			(acc, { product: { price }, quantity }) => {
 				return acc.add(money({ amount: price * quantity }))
 			},
 			money({ amount: 0 }),
 		)
+		
+		const haveDiscount = this.conditionDiscount !== undefined && this.totalProduct >= this.conditionDiscount.minimum
+		console.log(haveDiscount)
+		console.log(totalPrice.getAmount())
+		if (haveDiscount) {
+			totalPrice = totalPrice.percentage(this.conditionDiscount!.percentage)
+		}
+		console.log(totalPrice.getAmount())
 
 		this.totalPrice = totalPrice
 
@@ -140,6 +157,6 @@ export class Cart {
 	}
 
 	private updateAll(): void {
-		this.updateTotalItems().updateTotalPrice().updateTotalProducts()
+		this.updateTotalItems().updateTotalProducts().updateTotalPrice()
 	}
 }
