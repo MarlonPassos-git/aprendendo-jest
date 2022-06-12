@@ -34,6 +34,23 @@ describe('cart1', () => {
 	beforeEach(() => {
 		cart = new Cart()
 	})
+	describe('special conditions', () => {
+		it('should apply percentage discount when reach minimum amount of discount', () => {
+			const condition = {
+				percentage: 75,
+				minimum: 30,
+			}
+			const valueWithDiscount = Math.trunc((1000 * 2 + 654321 * 30) * 0.75)
+			cart.add(item1)
+			cart.add(item4)
+			cart.conditionDiscount = condition
+
+			console.log('total', cart.getTotalPrice())
+			console.log('valueWithDiscount', valueWithDiscount)
+
+			expect(cart.getTotalPrice()).toEqual(valueWithDiscount)
+		})
+	})
 
 	it('should return 0 when getTotal() is executed in a newly created ', () => {
 		expect(cart.getTotalItens()).toEqual(0)
@@ -112,22 +129,6 @@ describe('cart1', () => {
 		expect(cart.getTotalItens()).toEqual(0)
 		expect(cart.getTotalProducts()).toEqual(0)
 		expect(cart.getTotalPrice()).toEqual(0)
-	})
-
-	describe('special conditions', () => {
-		fit('should apply percentage discount when reach minimum amount of discount', () => {
-			const condition = {
-				percentage: 75,
-				minimum: 30,
-			}
-			const valueWithDiscount = Math.trunc((1000 * 2 + 654321 * 30) * 0.75)
-			cart.add(item1)
-			cart.add(item4)
-			cart.conditionDiscount = condition
-
-
-			expect(cart.getTotalPrice()).toEqual(valueWithDiscount)
-		})
 	})
 })
 
