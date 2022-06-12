@@ -1,6 +1,3 @@
-import remove from 'lodash/remove'
-import find  from 'lodash/find'
-
 type IProduct = {
   title: string
   price: number
@@ -37,6 +34,12 @@ export class Cart {
 		this.updateAll()
 	}
 
+	public checkout(): void {
+		this.listProducts = []
+		this.totalItems = 0
+		this.totalPrice = 0
+		this.totalProduct = 0
+	}
 
 	/**
 	 * add product to cart
@@ -57,7 +60,7 @@ export class Cart {
 	 */
 	public getListProducts(): IItem[] {
 		return this.listProducts
-	}
+	}	
 	/**
 	 * return the total price of all product 
 	 */
