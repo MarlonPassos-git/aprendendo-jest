@@ -7,3 +7,6 @@ export function dirijaCarro(callback: () => unknown, idade: number) {
     
   callback()
 }
+
+
+
